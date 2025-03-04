@@ -24,7 +24,7 @@ Taskify é uma API simples para gerenciar uma lista de tarefas (to-do list), esc
 
 1. **Clone o Repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/taskify.git
+   git clone https://github.com/Joullie/taskify.git
    cd taskify
    ```
 
