@@ -17,3 +17,37 @@ def create_task():
 @bp.route('/tasks', methods=['GET'])
 def get_tasks():
     return jsonify([task.to_dict() for task in tasks]), 200
+
+# ... (código anterior mantido)
+
+@bp.route('/tasks/<int:task_id>', methods=['PUT'])
+def update_task(task_id):
+    data = request.get_json()
+    for task in tasks:
+        if task.id == task_id:
+            if 'title' in data and isinstance(data['title'], str):
+                task.title = data['title']
+            if 'completed' in data and isinstance(data['completed'], bool):
+                task.completed = data['completed']
+            return jsonify(task.to_dict()), 200
+    return jsonify({"error": "Task not found"}), 404
+
+@bp.route('/tasks/<int:task_id>/complete', methods=['POST'])
+def complete_task(task_id):
+    for task in tasks:
+        if task.id == task_id:
+            task.completed = True
+            return jsonify(task.to_dict()), 200
+    return jsonify({"error": "Task not found"}), 404
+
+# ... (código anterior mantido)
+
+@bp.route('/tasks/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    global tasks
+    for i, task in enumerate(tasks):
+        if task.id == task_id:
+            tasks.pop(i)
+            return jsonify({"message": "Task deleted"}), 200
+    return jsonify({"error": "Task not found"}), 404
+
