@@ -106,23 +106,6 @@ pytest app/tests/test_routes.py -v
 
 Os testes verificam todas as rotas da API, garantindo que criação, listagem, atualização, marcação como concluída e exclusão funcionem corretamente.
 
-## Estrutura do Projeto
-
-```
-taskify/
-├── app/
-│   ├── __init__.py      # Configuração do Flask e registro de blueprints
-│   ├── models.py        # Modelo Task e lógica de persistência em JSON
-│   ├── routes.py        # Definição das rotas da API
-│   └── tests/
-│       ├── __init__.py
-│       └── test_routes.py  # Testes unitários
-├── tasks.json           # Arquivo de persistência (gerado automaticamente)
-├── requirements.txt     # Dependências do projeto
-├── run.py               # Ponto de entrada da aplicação
-└── README.md            # Esta documentação
-```
-
 ## Resolução de Problemas
 
 - **Erro de Codificação:** Se ocorrer `'utf-8' codec can't decode`, recrie o `tasks.json`:
